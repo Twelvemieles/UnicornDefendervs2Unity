@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class lifeScript : MonoBehaviour {
 
-    Vector3 Rotacion;
+    public Transform asteroiDad;
     // Use this for initialization
     void Start () {
 		
@@ -14,7 +14,7 @@ public class lifeScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        Rotacion = new Vector3 (transform.eulerAngles.x, transform.eulerAngles.y, 0);
+        transform.position = asteroiDad.position;
 
     }
 }

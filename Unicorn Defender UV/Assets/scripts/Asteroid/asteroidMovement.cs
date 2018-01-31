@@ -7,7 +7,7 @@ public class asteroidMovement : MonoBehaviour {
     public Text lifeText;
     
    
-    float i;
+    private float rotate;
     public GameObject padre;
     public mananger scriptPc;
     private int asteroidLifeA , asteroidLifeB , life, damaged;
@@ -16,7 +16,7 @@ public class asteroidMovement : MonoBehaviour {
     // Use this for initialization
     void Awake()
     {
-        i = Random.Range(-3, 3);
+        rotate = Random.Range(-3, 3);
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -46,7 +46,7 @@ public class asteroidMovement : MonoBehaviour {
     {
        
        
-        transform.Rotate(new Vector3(0f, 0f, i));
+        transform.Rotate(new Vector3(0f, 0f, rotate));
        
      if (life <= 0 )
         {

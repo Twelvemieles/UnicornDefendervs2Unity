@@ -5,10 +5,11 @@ using UnityEngine;
 public class randomSprite : MonoBehaviour {
 
     public Sprite[] asteroidSprite;
-    //int i = Random.Range(0, 2);
+    private int i ;
 	// Use this for initialization
-	void Start () {
-      //  this.GetComponent<SpriteRenderer>().sprite = asteroidSprite[i];
+	void Awake () {
+        i = Random.Range(0, 2);
+        GetComponent<SpriteRenderer>().sprite = asteroidSprite[i];
 
     }
 	

@@ -16,9 +16,10 @@ public class mananger : MonoBehaviour {
 	void Start () {
         score = 0;
         UpdateScore();
-        RangeLife = 5;
+        
         gameOver = false;
-        gameOverText.SetActive(true);
+        StartCoroutine(AsteroidRange());
+        gameOverText.SetActive(false);
         ScoreText.gameObject.SetActive(true);
     }
 	
@@ -29,7 +30,10 @@ public class mananger : MonoBehaviour {
     }
 	// Update is called once per frame
 	void Update () {
-		
+		if (gameOver)
+        {
+            GameOver();
+        }
 	}
     //cambiar el rango de la vida de los asteroides
     IEnumerator AsteroidRange()
@@ -37,10 +41,10 @@ public class mananger : MonoBehaviour {
 
         while (true)
         {
-            yield return new WaitForSeconds(6);
+           
             A += RangeLife;
             B += RangeLife;
-
+            yield return new WaitForSeconds(6);
         }
     }
 
@@ -52,7 +56,6 @@ public class mananger : MonoBehaviour {
     public void GameOver() //esto hace aparecer el menú de perder
     {
         gameOverText.SetActive(true);
-        gameOver = true;
         ScoreText.gameObject.SetActive(false);
     }
 }

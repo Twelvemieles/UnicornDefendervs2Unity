@@ -7,9 +7,12 @@ public class spawnerRandom : MonoBehaviour {
     public GameObject asteroid;
     public int hazardCount;
     public float spawnWait;
-	// Use this for initialization
-	void Start () {
+    private bool gameOvered;
+    public mananger scriptPc;
+    // Use this for initialization
+    void Start () {
        StartCoroutine( AsteroidRespawn());
+        scriptPc = GameObject.Find("PC").GetComponent<mananger>();
     }
 	
 	// Update is called once per frame
@@ -25,8 +28,7 @@ public class spawnerRandom : MonoBehaviour {
         {
             for (int i = 0; i < hazardCount; i++)
             {
-                int side = Random.Range(1, 4);
-                switch (side)
+                switch (Random.Range(1, 4))
                 {
                     case 1:
                         Vector3 randomSpawn1 = new Vector3(Random.Range(-7f, -3f), Random.Range(-15f, 7f), 0f);
@@ -48,6 +50,14 @@ public class spawnerRandom : MonoBehaviour {
             }
 
             yield return new WaitForSeconds(spawnWait);
+
+           
+            gameOvered = scriptPc.gameOver;
+
+            if (gameOvered)
+            {
+                break;
+            }
         }
     }
 }
